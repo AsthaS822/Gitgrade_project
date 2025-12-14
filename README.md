@@ -27,7 +27,7 @@ A modern web application that evaluates GitHub repositories and provides compreh
 - **APIs**: GitHub API, OpenRouter API
 
 
-**VIDEO**:**  https://drive.google.com/file/d/1Lxb-klT5kKsEH3Ke2qytfuQdxBYOCYCA/view?usp=sharing**
+**VIDEO**:**  https://drive.google.com/file/d/1Lxb-klT5kKsEH3Ke2qytfuQdxBYOCYCA/view?usp=sharing **
 
 ## 📋 Prerequisites
 
