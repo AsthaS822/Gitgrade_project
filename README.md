@@ -25,7 +25,9 @@ A modern web application that evaluates GitHub repositories and provides compreh
 - **Styling**: Tailwind CSS
 - **Animations**: Framer Motion
 - **APIs**: GitHub API, OpenRouter API
-- **Deployment**: Vercel
+
+
+**VIDEO**:**  https://drive.google.com/file/d/1kW0twaxp0sfhZKIB68a-Myzx54CJT3d9/view?usp=drivesdk  **
 
 ## 📋 Prerequisites
 
