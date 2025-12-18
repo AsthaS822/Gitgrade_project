@@ -118,5 +118,3 @@
 
 ---
 
-**Note**: Make sure your GitHub token has `public_repo` scope at minimum. The OpenRouter API key is optional - the app will work with basic analysis if not provided.
-
