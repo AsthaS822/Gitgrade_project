@@ -2,7 +2,7 @@
 
 A modern web application that evaluates GitHub repositories and provides comprehensive feedback with personalized improvement roadmaps.
 
-## 🚀 Features
+##  Features
 
 - **Comprehensive Analysis**: Evaluates repositories across 6 key dimensions:
   - Code Quality & Readability
@@ -18,7 +18,7 @@ A modern web application that evaluates GitHub repositories and provides compreh
 
 - **Real-Time Analysis**: Fast and accurate repository evaluation using GitHub API
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Framework**: Next.js 14 (App Router)
 - **Language**: TypeScript
@@ -29,14 +29,14 @@ A modern web application that evaluates GitHub repositories and provides compreh
 
 **VIDEO**:**  https://drive.google.com/file/d/1Lxb-klT5kKsEH3Ke2qytfuQdxBYOCYCA/view?usp=sharing **
 
-## 📋 Prerequisites
+##  Prerequisites
 
 - Node.js 18+ and npm/yarn
 - GitHub Personal Access Token
 - OpenRouter API Key (optional, falls back to basic analysis)
 - Supabase credentials (optional, for future enhancements)
 
-## 🔧 Setup Instructions
+##  Setup Instructions
 
 1. **Clone the repository**
    ```bash
@@ -59,7 +59,7 @@ A modern web application that evaluates GitHub repositories and provides compreh
    OPENROUTER_API_KEY=your_openrouter_api_key_here
    ```
    
-   **⚠️ IMPORTANT**: Never commit `.env.local` to Git! It's already in `.gitignore`.
+   ** IMPORTANT**: Never commit `.env.local` to Git! It's already in `.gitignore`.
 
 4. **Run the development server**
    ```bash
@@ -69,7 +69,7 @@ A modern web application that evaluates GitHub repositories and provides compreh
 5. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
-## 🚀 Deployment to Vercel
+##  Deployment to Vercel
 
 1. **Push your code to GitHub**
 
@@ -88,7 +88,7 @@ A modern web application that evaluates GitHub repositories and provides compreh
 4. **Deploy**
    Click "Deploy" and wait for the build to complete
 
-## 📊 How It Works
+## How It Works
 
 1. **Input**: User provides a GitHub repository URL
 2. **Data Fetching**: System fetches repository metadata using GitHub API:
@@ -116,7 +116,7 @@ A modern web application that evaluates GitHub repositories and provides compreh
    - Written summary
    - Personalized roadmap
 
-## 🎨 UI Features
+## UI Features
 
 - **Glowing Button Effects**: Animated borders and hover effects
 - **Smooth Animations**: Framer Motion powered transitions
@@ -124,7 +124,7 @@ A modern web application that evaluates GitHub repositories and provides compreh
 - **Dark Theme**: Modern dark UI with gradient accents
 - **Real-time Feedback**: Loading states and error handling
 
-## 📝 API Endpoints
+##  API Endpoints
 
 ### POST `/api/analyze`
 
@@ -159,22 +159,17 @@ Analyzes a GitHub repository.
 }
 ```
 
-## 🔒 Security Notes
+## Security Notes
 
 - GitHub token is stored server-side only
 - API keys are never exposed to the client
 - All API calls are made from the server
 
-## 🤝 Contributing
-
-This is a hackathon project. Feel free to fork and improve!
-
 ## 📄 License
 
 MIT License
 
-## 👨‍💻 Author
-
+##  Author
 Built for Hackathon - AI + Code Analysis + Developer Profiling
 
 ---
