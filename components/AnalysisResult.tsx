@@ -103,7 +103,7 @@ export default function AnalysisResult({ result }: AnalysisResultProps) {
 
     cursorY += 2
     doc.setFontSize(14)
-    doc.setFont(undefined, 'bold')
+    doc.setFont('helvetica', 'bold')
     doc.text('Personalized Roadmap', margin, cursorY)
     cursorY += lineHeight
     doc.setFontSize(11)
