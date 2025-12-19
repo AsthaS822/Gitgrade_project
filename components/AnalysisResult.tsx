@@ -53,9 +53,9 @@ export default function AnalysisResult({ result }: AnalysisResultProps) {
           cursorY = margin
         }
         if (options.bold) {
-          doc.setFont(undefined, 'bold')
+          doc.setFont('helvetica', 'bold')
         } else {
-          doc.setFont(undefined, 'normal')
+          doc.setFont('helvetica', 'normal')
         }
         doc.text(line, margin, cursorY)
         cursorY += lineHeight
@@ -64,7 +64,7 @@ export default function AnalysisResult({ result }: AnalysisResultProps) {
     }
 
     doc.setFontSize(18)
-    doc.setFont(undefined, 'bold')
+    doc.setFont('helvetica', 'bold')
     doc.text('GitGrade Repository Report', margin, cursorY)
     cursorY += lineHeight + 4
 
@@ -74,7 +74,7 @@ export default function AnalysisResult({ result }: AnalysisResultProps) {
 
     cursorY += 2
     doc.setFontSize(14)
-    doc.setFont(undefined, 'bold')
+    doc.setFont('helvetica', 'bold')
     doc.text('Summary', margin, cursorY)
     cursorY += lineHeight
     doc.setFontSize(11)
@@ -82,7 +82,7 @@ export default function AnalysisResult({ result }: AnalysisResultProps) {
 
     cursorY += 2
     doc.setFontSize(14)
-    doc.setFont(undefined, 'bold')
+    doc.setFont('helvetica', 'bold')
     doc.text('Detailed Metrics', margin, cursorY)
     cursorY += lineHeight
     doc.setFontSize(11)
