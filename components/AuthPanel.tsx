@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import { motion } from 'framer-motion'
 import { LogIn, LogOut, UserPlus } from 'lucide-react'
+import type { AuthChangeEvent, Session } from '@supabase/supabase-js'
 
 type Mode = 'login' | 'register'
 
@@ -24,12 +25,14 @@ export default function AuthPanel() {
 
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUserEmail(session?.user?.email ?? null)
-    })
+    } = supabase.auth.onAuthStateChange(
+      (_event: AuthChangeEvent, session: Session | null) => {
+        setUserEmail(session?.user?.email ?? null)
+      }
+    )
 
-    supabase.auth.getUser().then(({ data }) => {
-      setUserEmail(data.user?.email ?? null)
+    supabase.auth.getUser().then((response: { data: { user: { email: string } | null } }) => {
+      setUserEmail(response.data.user?.email ?? null)
     })
 
     return () => {
