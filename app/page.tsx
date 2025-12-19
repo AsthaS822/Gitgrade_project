@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Github, Sparkles, TrendingUp, FileText, Code, GitBranch, CheckCircle2, AlertCircle } from 'lucide-react'
 import AnalysisResult from '@/components/AnalysisResult'
 import LoadingSpinner from '@/components/LoadingSpinner'
+import AuthPanel from '@/components/AuthPanel'
 
 export default function Home() {
   const [repoUrl, setRepoUrl] = useState('')
@@ -73,6 +74,9 @@ export default function Home() {
             AI-Powered Repository Analysis • Get Instant Feedback & Personalized Roadmaps
           </p>
         </motion.div>
+
+        {/* Auth Panel */}
+        <AuthPanel />
 
         {/* Input Section */}
         <motion.div

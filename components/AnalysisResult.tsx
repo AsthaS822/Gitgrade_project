@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { CheckCircle2, AlertTriangle, TrendingUp, FileText, Code, GitBranch, Star } from 'lucide-react'
+import { CheckCircle2, AlertTriangle, TrendingUp, FileText, Code, GitBranch, Star, Download } from 'lucide-react'
+import jsPDF from 'jspdf'
 
 interface AnalysisResultProps {
   result: {
@@ -36,6 +37,84 @@ export default function AnalysisResult({ result }: AnalysisResultProps) {
     return colors[level] || colors['Beginner']
   }
 
+  const handleDownloadPdf = () => {
+    const doc = new jsPDF()
+    const lineHeight = 7
+    const margin = 14
+    const pageHeight = doc.internal.pageSize.getHeight()
+
+    let cursorY = margin
+
+    const addLine = (text: string, options: { bold?: boolean } = {}) => {
+      const lines = doc.splitTextToSize(text, doc.internal.pageSize.getWidth() - margin * 2)
+      lines.forEach((line: string) => {
+        if (cursorY + lineHeight > pageHeight - margin) {
+          doc.addPage()
+          cursorY = margin
+        }
+        if (options.bold) {
+          doc.setFont(undefined, 'bold')
+        } else {
+          doc.setFont(undefined, 'normal')
+        }
+        doc.text(line, margin, cursorY)
+        cursorY += lineHeight
+      })
+      cursorY += 2
+    }
+
+    doc.setFontSize(18)
+    doc.setFont(undefined, 'bold')
+    doc.text('GitGrade Repository Report', margin, cursorY)
+    cursorY += lineHeight + 4
+
+    doc.setFontSize(12)
+    addLine(`Overall Score: ${result.score} / 100`, { bold: true })
+    addLine(`Level: ${result.level}`, { bold: true })
+
+    cursorY += 2
+    doc.setFontSize(14)
+    doc.setFont(undefined, 'bold')
+    doc.text('Summary', margin, cursorY)
+    cursorY += lineHeight
+    doc.setFontSize(11)
+    addLine(result.summary)
+
+    cursorY += 2
+    doc.setFontSize(14)
+    doc.setFont(undefined, 'bold')
+    doc.text('Detailed Metrics', margin, cursorY)
+    cursorY += lineHeight
+    doc.setFontSize(11)
+
+    const metrics: { label: string; key: keyof AnalysisResultProps['result']['details'] }[] = [
+      { key: 'codeQuality', label: 'Code Quality' },
+      { key: 'documentation', label: 'Documentation' },
+      { key: 'gitPractices', label: 'Git Practices' },
+      { key: 'structure', label: 'Structure' },
+      { key: 'tests', label: 'Tests' },
+      { key: 'realWorldRelevance', label: 'Real-World Relevance' },
+    ]
+
+    metrics.forEach((metric) => {
+      const score = result.details[metric.key]
+      addLine(`${metric.label}: ${score}%`)
+    })
+
+    cursorY += 2
+    doc.setFontSize(14)
+    doc.setFont(undefined, 'bold')
+    doc.text('Personalized Roadmap', margin, cursorY)
+    cursorY += lineHeight
+    doc.setFontSize(11)
+
+    result.roadmap.forEach((item, idx) => {
+      addLine(`${idx + 1}. ${item}`)
+    })
+
+    doc.save('gitgrade-report.pdf')
+  }
+
   return (
     <div className="max-w-6xl mx-auto space-y-6">
       {/* Score Card */}
@@ -54,8 +133,17 @@ export default function AnalysisResult({ result }: AnalysisResultProps) {
               <div className="text-4xl text-slate-500">/ 100</div>
             </div>
           </div>
-          <div className={`px-6 py-3 rounded-xl border ${getLevelBadge(result.level)}`}>
-            <span className="text-xl font-semibold">{result.level}</span>
+          <div className="flex flex-col items-stretch gap-3 md:items-end">
+            <div className={`px-6 py-3 rounded-xl border ${getLevelBadge(result.level)}`}>
+              <span className="text-xl font-semibold">{result.level}</span>
+            </div>
+            <button
+              onClick={handleDownloadPdf}
+              className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-slate-900/80 border border-slate-600 text-xs md:text-sm font-medium text-slate-100 hover:bg-slate-800 hover:border-blue-400 hover:text-blue-100 transition-colors"
+            >
+              <Download className="w-4 h-4" />
+              Download PDF report
+            </button>
           </div>
         </div>
       </motion.div>
