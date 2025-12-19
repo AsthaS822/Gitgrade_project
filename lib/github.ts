@@ -75,7 +75,10 @@ export async function fetchRepositoryData(repoUrl: string): Promise<GitHubRepoDa
       const contentsResponse = await axios.get(`${baseURL}/repos/${owner}/${repo}/git/trees/${repoData.default_branch}?recursive=1`, { headers })
       const tree = contentsResponse.data.tree || []
       fileCount = tree.filter((item: any) => item.type === 'blob').length
-      folderStructure = [...new Set(tree.map((item: any) => item.path.split('/')[0]))].filter(Boolean)
+      const rootFoldersSet = new Set<string>(
+        tree.map((item: any) => (typeof item.path === 'string' ? item.path.split('/')[0] : ''))
+      )
+      folderStructure = Array.from(rootFoldersSet).filter(Boolean)
       
       testFiles = tree
         .filter((item: any) => 
