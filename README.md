@@ -88,7 +88,7 @@ A modern web application that evaluates GitHub repositories and provides compreh
 4. **Deploy**
    Click "Deploy" and wait for the build to complete
 
-## 📊 How It Works
+## How It Works
 
 1. **Input**: User provides a GitHub repository URL
 2. **Data Fetching**: System fetches repository metadata using GitHub API:
@@ -115,9 +115,9 @@ A modern web application that evaluates GitHub repositories and provides compreh
    - Detailed metrics breakdown
    - Written summary
    - Personalized roadmap
-6. Gives Downloadable PDF also.   
+6. **Gives Downloadable PDF also**.   
 
-## 🎨 UI Features
+## UI Features
 
 - **Glowing Button Effects**: Animated borders and hover effects
 - **Smooth Animations**: Framer Motion powered transitions
@@ -160,13 +160,13 @@ Analyzes a GitHub repository.
 }
 ```
 
-## 🔒 Security Notes
+## Security Notes
 
 - GitHub token is stored server-side only
 - API keys are never exposed to the client
 - All API calls are made from the server
 
-## 🤝 Contributing
+## Contributing
 
 This is a hackathon project. Feel free to fork and improve!
 
